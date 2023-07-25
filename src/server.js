@@ -5,7 +5,7 @@ import initWebRoutes from "./routes/web";
 //Cau lenh de chay process.env lay gia tri trong .env
 require("dotenv").config();
 
-const app = express();
+let app = express();
 
 //config View Engine
 configViewEngine(app);
@@ -13,9 +13,9 @@ configViewEngine(app);
  //init Web Routes
 initWebRoutes(app);
 
-// || de backup khi PORT 8080 chua duoc khai bao
+// || de backup khi PORT trong .env chua duoc khai bao hoac bi loi
 // doan code lay thong so Port tu file .env
-const PORT = process.env.PORT || 8081;
+let PORT = process.env.PORT || 8081;
 app.listen(PORT, ()=> {
     console.log(">>> JWT Backend is running on port = "+PORT);
 })

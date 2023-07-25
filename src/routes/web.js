@@ -1,15 +1,16 @@
 import express from "express";
- 
-const router = express.Router();
+import homeCotroller from "../controller/homeCotroller";
+
+let router = express.Router();
 
 /**
- * 
+ *
  * @param {*} app :  express app
  */
-const initWebRoutes = (app) => {
-    router.get("/", (req, res)=> {
-        return res.send("Hello World");
-    })
-    return app.use("/",router);
+let initWebRoutes = (app) => {
+  router.get('/',homeCotroller.getHomePage);
+  router.get('/about',homeCotroller.getAboutPage);
+  return app.use("/", router);
 }
-export default initWebRoutes;
+//export
+module.exports = initWebRoutes;
